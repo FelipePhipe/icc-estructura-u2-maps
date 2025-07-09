@@ -1,6 +1,5 @@
 package models;
 
-import java.util.Objects;
 
 public class Empleado implements Comparable<Empleado>{
     private int id;
@@ -15,7 +14,7 @@ public class Empleado implements Comparable<Empleado>{
 
     @Override
     public int hashCode(){
-        return id + name.hashCode();
+        return id ;
     }
 
     @Override
@@ -31,7 +30,7 @@ public class Empleado implements Comparable<Empleado>{
         // Castea el objeto a la clase actual
         Empleado otraPersona = (Empleado) obj;
         // Compara los atributos
-        return Objects.equals(name, otraPersona.name) && id == otraPersona.id;
+        return id == otraPersona.id;
     }
 
     
