@@ -28,9 +28,25 @@ public class Ejercicios {
      * frecuencia.
      */
     public static boolean areAnagrams(String str1, String str2) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (str1.length() != str2.length()) {
+            return false;
+        }
 
+        HashMap<Character, Integer> conteo = new HashMap<>();
+
+        for (char c : str1.toCharArray()) {
+            conteo.put(c, conteo.getOrDefault(c, 0) + 1);
+        }
+
+        for (char c : str2.toCharArray()) {
+            if (!conteo.containsKey(c)) return false;
+            conteo.put(c, conteo.get(c) - 1);
+            if (conteo.get(c) < 0) return false;
+        }
+
+        return true;
     }
+
 
     /*
      * Dado un array de números enteros y un objetivo, retorna los índices de dos
@@ -48,8 +64,19 @@ public class Ejercicios {
      * Output: null
      */
     public int[] sumatoriaDeDos(int[] nums, int objetivo) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        HashMap<Integer, Integer> mapa = new HashMap<>();
+        
+        for (int i = 0; i < nums.length; i++) {
+            int complemento = objetivo - nums[i];
+            if (mapa.containsKey(complemento)) {
+                return new int[]{mapa.get(complemento), i};
+            }
+            mapa.put(nums[i], i);
+        }
+
+        return null;
     }
+
 
     /**
      * Cuenta la frecuencia de cada caracter en la cadena recibida y
@@ -60,8 +87,15 @@ public class Ejercicios {
      * Output: {h=1, o=1, l=1, a=1}
      */
     public void contarCaracteres(String texto) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        HashMap<Character, Integer> conteo = new HashMap<>();
+
+        for (char c : texto.toCharArray()) {
+            conteo.put(c, conteo.getOrDefault(c, 0) + 1);
+        }
+
+        System.out.println(conteo);
     }
+
 
     /**
      * Verifica si dos palabras son anagramas.
@@ -72,6 +106,7 @@ public class Ejercicios {
      * Output: true
      */
     public boolean sonAnagramas(String palabra1, String palabra2) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return areAnagrams(palabra1, palabra2);
     }
+
 }

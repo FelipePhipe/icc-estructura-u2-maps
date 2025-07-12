@@ -83,7 +83,20 @@ public class App {
     }
 
     private static void runEjerccios() {
-        throw new UnsupportedOperationException("Not implemented yet");
+        Ejercicios e = new Ejercicios();
+
+        System.out.println("Anagramas (listen, silent): " + Ejercicios.areAnagrams("listen", "silent"));
+        System.out.println("Anagramas (hello, bello): " + Ejercicios.areAnagrams("hello", "bello"));
+
+        int[] resultado = e.sumatoriaDeDos(new int[]{9, 2, 3, 6}, 5);
+        if (resultado != null)
+            System.out.println("Índices que suman 5: [" + resultado[0] + ", " + resultado[1] + "]");
+        else
+            System.out.println("No hay suma igual a 5");
+
+        e.contarCaracteres("hola");
+        System.out.println("sonAnagramas(roma, amor): " + e.sonAnagramas("roma", "amor"));
+
 
     }
 }
